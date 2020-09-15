@@ -1107,6 +1107,7 @@ void recv_test(struct timespec *timeArray, int iter, int *i) {
 int main(int argc, char *argv[])
 {
 	home = getenv("LEBENCH_DIR");
+	home = "/users/nithinv/LEBench";
 	
 	output_fn = (char *)malloc(500*sizeof(char));
 	strcpy(output_fn, home);
@@ -1123,6 +1124,8 @@ int main(int argc, char *argv[])
 	char *str_os_name = argv[2];
 	FILE *fp;
 	FILE *copy = NULL;
+	printf("%s\n",new_output_fn );
+	return 0;
 	fp=fopen(new_output_fn,"w");
 	isFirstIteration = false;
 	if (*iteration == '0'){isFirstIteration = true;}
