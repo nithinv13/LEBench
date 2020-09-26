@@ -889,7 +889,7 @@ void context_switch_test(struct timespec *diffTime) {
 
 int msg_size = -1;
 int curr_iter_limit = -1;
-#define sock "/TEST_DIR/socket"
+#define sock "socket"
 void send_test(struct timespec *timeArray, int iter, int *i) {
 	int retval;
 	int fds1[2], fds2[2];
@@ -917,7 +917,7 @@ void send_test(struct timespec *timeArray, int iter, int *i) {
 		close(fds2[1]);
 
 		struct sockaddr_un client_addr;
-		socklen_t client_addr_len;
+		socklen_t client_addr_len = sizeof(struct sockaddr_un);
 	
 		int fd_server = socket(AF_UNIX, SOCK_STREAM, 0);
 		if (fd_server < 0) printf("[error] failed to open server socket.\n");
@@ -1017,7 +1017,7 @@ void recv_test(struct timespec *timeArray, int iter, int *i) {
 		close(fds2[1]);
 
 		struct sockaddr_un client_addr;
-		socklen_t client_addr_len;
+		socklen_t client_addr_len = sizeof(struct sockaddr_un);
 	
 		int fd_server = socket(AF_UNIX, SOCK_STREAM, 0);
 		if (fd_server < 0) printf("[error] failed to open server socket.\n");
